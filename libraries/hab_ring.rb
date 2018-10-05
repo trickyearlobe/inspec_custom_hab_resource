@@ -28,7 +28,8 @@ class HabRing < Inspec.resource(1)
 # "last_service_file_counter": 0
 
   def census
-    @census ||= JSON.parse(::HTTPClient.get("#{@opts[:url]}:9631/census").body)
+    # @census ||= JSON.parse(::HTTPClient.get("#{@opts[:url]}:9631/census").body)
+    @census ||= JSON.parse(inspec.http("#{@opts[:url]}:9631/census").body)
   end
 
 end
